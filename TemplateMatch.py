@@ -20,10 +20,11 @@ def templateMatching(image, template):
     cv2.rectangle(image, top_left, bottom_right, (0, 0, 0), 2)
 
     # Show result
-    cv2.imshow("Template", template)
-    cv2.imshow("Result", image)
+    # cv2.imshow("Template", template)
+    # cv2.imshow("Result", image)
 
-    cv2.moveWindow("Template", 1000, 50)
-    cv2.moveWindow("Result", 150, 50)
+    # cv2.moveWindow("Template", 1000, 50)
+    # cv2.moveWindow("Result", 150, 50)
 
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
+    return(cv2.imshow("Result", image))
