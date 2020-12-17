@@ -2,6 +2,7 @@ from TemplateMatch import *
 import cv2
 import os
 import matplotlib.pyplot as plt
+from skimage import feature, filters, io, color
 from waldo import color
 
 dir = "images"
@@ -11,25 +12,43 @@ files1 = os.listdir(dir1)
 
 def main(f,f1):
 
-    i=1
+    for i in range(3):
 
-    print(files,files1)
+        l = [50,1000,10000]
+        h = [300,20000,20000]
 
-    image = cv2.imread(dir + "/" + f[i])
-    template = cv2.imread(dir1 + "/" + f1[i])
+        print(files,files1)
 
-    seg = color(dir + "/" + f[i])
-    box = templateMatching(image, template)
-    
-    fig = plt.figure()
-fig.add_subplot(4, 1, 1)
-imgplot = plt.imshow(seg)
-fig.add_subplot(4, 1, 2)
-imgplot = plt.imshow(image)
-fig.add_subplot(4, 1, 3)
-imgplot = plt.imshow(template)
-fig.add_subplot(4, 1, 4)
-imgplot = plt.imshow(box)
+        image = io.imread(dir + "/" + f[i])
+        template = io.imread(dir1 + "/" + f1[i])
+
+        seg = color(dir + "/" + f[i], l[i], h[i])
+        box = templateMatching(image, template)
+          
+       
+        
+       
+         
+        
+          
+        fig = plt.figure( figsize=[15, 11])
+        plt.axis('off')
+        plt.imshow(box)
+
+        fig = plt.figure( figsize=[15, 10])
+        plt.axis('off')
+        plt.imshow(template)
+
+        fig = plt.figure( figsize=[15, 10])
+      
+        plt.axis('off')
+        plt.imshow(seg)
+
+        fig = plt.figure( figsize=[15, 10])
+        plt.axis('off') 
+        plt.imshow(image)
+
+        plt.show()
 
 if __name__ == '__main__':
     main(files,files1)

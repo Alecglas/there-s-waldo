@@ -27,4 +27,4 @@ def templateMatching(image, template):
     # cv2.moveWindow("Result", 150, 50)
 
     # cv2.waitKey(0)
-    return(cv2.imshow("Result", image))
+    return image
